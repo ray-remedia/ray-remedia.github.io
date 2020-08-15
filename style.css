@@ -1,0 +1,430 @@
+/* reset semua */
+* {
+    margin: 0;
+    padding:0;
+}
+
+img {
+    width: 100%;
+        /* lebar 100% */
+}
+
+body {
+    background-color: #ddd;
+    font-size: 18px;
+    font-family: "Oswald", Arial, Helvetica, sans-serif;
+    margin: 50px;
+        /* jadi disekeliling gambar dikasih jarak 50px */
+}
+
+/* BUAT KONTAINER PEMBUNGKUS */
+.container {
+    display: grid;
+        /* agar bisa atur urutannya misal navbar dimana, dll */
+    gap: 10px;
+        /* agar menu home dll dan gambar tidak mepet */
+}
+
+/* HEADER */
+.header {
+    display: grid;
+    /* mau buat 2 baris, masing2 baris 3 kolom */
+    grid-template-areas: 
+    "hero hero feature-1"
+    "hero hero feature-2";
+}
+
+/* set bahwa hero ini nama area-nya hero */
+.hero {
+    grid-area: hero;
+    /* akan menempati 4 kolom sesuai grid-template-areas: diatas  */
+    min-height: 300px ;
+        /* tinggi minimal */
+    background-image: url(img/1.jpg);
+    background-size: cover;
+        /* supaya gambar memenuhi containernya */
+    background-position:center ;
+    padding: 50px;
+}
+
+/* tulisan awalnya hilang dulu */
+.hero h2, .hero p {
+    display: none;
+}
+
+/* set 2 gambar dikanan */
+.features {
+    background-color:black ;
+    color: white;
+    /* biar tulisan ke tengah buat dulu futures nya jadi grid */
+    display: grid;
+
+        /* atur letaknya untuk horizontal */
+    justify-content: center;
+        /* atur letaknya untuk vertikal */
+    align-content: center;
+    
+    /* atur textnya ke tengah */
+    text-align: center;
+
+    /* agar saat mouse disorot menjadi tangan/pointer */
+    cursor: pointer;
+}
+
+/* set grid area feature-1 terhadap : grid-template-areas:*/
+.feature-1 {
+    grid-area:feature-1;
+    background-image: url(img/2.jpg);
+    background-size: cover;
+        /* memenuhi container */
+}
+
+.feature-2 {
+    grid-area:feature-2;
+    background-image: url(img/3.jpg);
+    background-size: cover;
+        /* memenuhi container */
+}
+
+/* atur ukuran harga */
+.features .price {
+    font-size: 3em;
+        /* 2 kali lipat dari 18px karna di body sdh di set font-size: 18px; */
+    font-weight: 200;
+        /* tadi font dari google ada yg 200, lihat htmlnya */
+}
+
+/* set nav */
+.menu {
+    order: -1;
+        /* agar nama toko dan menu2 home product dll posisi di paling atas */
+    display: grid;
+    /* isinya judul/brand dan nav/navigasi */
+
+    /* agar header lebih kecil dari nav nya */
+    grid-template-columns: 1fr 2fr;
+
+    /* agar menunya ditengah secara vertikal */
+    align-items: center;
+    /* background-color: orange; */
+}
+
+/* set brand/nama toko */
+.menu .brand {
+    font-size: 1.3em;
+        /* 1,3 kali lebih besar dari 18px default yg di set di body */
+    color: #333;
+}
+
+/* ul merupakan pembungkus dari li nya */
+.menu ul {
+    list-style: none;
+        /* HILANGIN TITIK KIRINYA KARNA BENTUK LI */
+    display: grid;
+
+    /* supaya ke kanan dan responsiv auto-fit dan lebar minimal 100px, max 1fr  */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+    /* supaya ada jarak antar menunya */
+    gap: 5px;
+}
+
+.menu a {
+    display: block;
+        /* supaya area klik nya bukan hanya tulisan tapi 1 kotak */
+    background-color: black;
+        /* warna kotak */
+    color: white;
+        /* warna tulisan */
+    text-decoration: none;
+        /* hilangin garis bawah link menu */
+    text-align: center;
+        /* posisi ditengah kotak */
+    padding: 6px ;
+        /* agar kotak agak besar */
+    /* jarak antar menu di set di .menu ul */
+
+    text-transform: uppercase;
+        /* agar menunya huruf besar */
+    font-size: 0.9em;
+        /* 90% dari 18px default body */
+}
+                    /* ================================= */
+                    /* COPY DARI STYLE.CSS NGOBAR 23 */
+                    /* hamburger icon/menu */
+                    .menu-togle {
+                        /* pembungkus menu display flex, agar menunya gampang diatur2 */
+                        /* display: flex; defaultnya jejer ke kanan */
+                        display: none; /* display: flex; untuk set saja, kalau sudah oke hamburger icon/menu display diganti none/dihilangkan, dimunculkan saat brousernya mengecil sampai mobile */
+                        /* agar jejer ke bawah dikasih direction */
+                        flex-direction: column;
+                        height: 20px;
+                        /* agar menunya terdistribusi merata */
+                        justify-content: space-between;
+                        /* background-color: black; */
+                    
+                        
+                        position: relative;
+                        /* fungsinya untuk akali checkbox transparan */
+
+                        z-index: 2;
+                    }
+
+                    .menu-togle input {
+                        /* biar aturnya gampang */
+                        position: absolute;
+                        /* agar checkboxnya pas di posisi menu togle */
+                        width: 40px;
+                        height: 28px;
+                        left: -7px;
+                        top: -5px;
+                        /* buat transparan/gak kelihatan karna hanya akali saja */
+                        opacity: 0;
+                        /* saat di check maka nantinya animasi hamburger-menunya bekerja */
+
+                        /* agar mousenya berubah jadi tangan */
+                        cursor: pointer; 
+                        /* sekarang buat hamburger menu animation dibawah */
+
+                        /* agar checkbox selalu diatas z indexnya dikasih banyak  */
+                        z-index: 999;
+                    }
+
+                    /* HAMBURGER MENU ANIMATION */
+                    /* CARI SPAN YG ADA DI MENU TOGGLE YG DIA ITU ANAK KE BERAPA */
+                    .menu-togle span:nth-child(2) {
+                        /* background-color: red; */
+                        /* untuk tes sa */
+                        transform-origin: 0 0;
+                            /* agar porosnya di awal garis menu  */
+                    }
+
+                    .menu-togle span:nth-child(4) {
+                        /* background-color: red; */
+                        /* untuk tes sa */
+                        transform-origin: 0 100%;
+                            /* agar porosnya di kanan bawah  */
+                    }
+
+                    /* saat checkbox yg transparan di checklist/check maka 
+                    cari sibling/sodara kansung (lihat html) yang merupakan span yang merupakan anak ke-2*/
+                    .menu-togle input:checked ~ span:nth-child(2) {
+                        /* background-color: red; */
+                            /* berhasil saat di checkbackground-color ubah jasi merah berhasil */
+                            transform: rotate(45deg) translate(-1px, -1px);
+                            background-color: white;
+                            /* tapi saat rotasi porosnya ditengah, kalau mau porosnya di paling awal garis maka tambah diatas transform-origin: 0 0; sumbu x 0 dan sumbu y 0 */
+                    }
+
+                    .menu-togle input:checked ~ span:nth-child(4) {
+                        /* background-color: red; */
+
+                            transform: rotate(-45deg) translate(-1px, 0);
+                            background-color: white;
+                            /* rotasinya ke atas kebalikan diatas jadi akan membentuk huruf X */
+                            /* translate(-1px, 0);artinya sumbu x nya ditarik ke kiri -1 biar pas */
+
+                    }
+
+                    .menu-togle input:checked ~ span:nth-child(3) {
+                        /* background-color: red; */
+
+                            transform: scale(0);
+                            /* agar saat membentuk hurux X garis awal dan akhirnya, garis tengahnya hilang*/
+                    }
+
+                    .menu-togle span {
+                        /* span displaynya inline, dirubah jd block */
+                        display: block;
+                        width: 25px;
+                            /* lebar */
+                        height: 3px;
+                            /* tinggi */
+                        background-color: rgb(0, 0, 0);
+
+                            /* ujung tumpul */
+                        border-radius: 10px;
+
+                        /* buat animasi saat checklist membentuk huruf x dalam stengah detik */
+                        transition: all 0.5s;
+                    }
+
+                    /* kasih animasi */
+                    nav ul li a:hover {
+                        color: rgb(238, 224, 252);
+                    }
+                    /* ================================= */
+
+
+/* SET SERVICES */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+        /* jarak antar service */
+
+}
+/* tiap2 service */
+.service {
+    background-color: white;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #aaa;
+        /* border kotaknya */
+    border-radius: 5px;
+        /* kotak agak elips */
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.service .icon {
+    font-size: 3em;
+    /* ukuran font icon gambar */
+}
+
+.service h3 {
+    font-size: 1.5em;
+}
+
+.service p {
+    font-weight: 200;
+    /* ukuran paragraf tdk bold */
+    letter-spacing: 1px;
+    /* jarak antar huruf agak jauh */
+    font-size: 0.8em; 
+        /* font size diperkecil 0.8 terhadap default 18 px */
+}
+
+
+
+/* SET GALLERY */
+.gallery {
+    margin-top: 100px;
+        /* biar ada jarak dengan kotak services diatas gallery */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+    /* biar ada jarak diatara gambar2 di gallery */
+    gap: 5px;
+}
+
+.gallery h2 {
+    /* supaya tulisan galerinya jadi 1 baris diatasgambar2 galerynya */
+    grid-column-start: 1;
+    grid-column-end: -1;
+    /* jadi tulisan Gallery akan habiskan 1 baris */
+    text-align: center;
+        /* posisi tengah */
+    margin-bottom: 20px;
+        /* jarak antara tulisan Gallery dan apapun dibawahnya */
+}
+
+
+/* BUAT RESPONSIVE / RESPONSIVE BREAKPOINT */
+/* untuk widescreen lebar diatas 1200 MENU NAV ADA DIATAS */
+@media screen and (max-width:1024px) {
+    .menu {
+        order: inherit;
+            /* balikin ke awal, awalnya nama toko dan menu2 home dll posisinya dibawah 3 gambar  */
+        
+            grid-template-columns: 1fr;
+            /* agar menunya ngak turun jadi 2 kolom */
+    }
+
+    .menu .brand {
+        display: none;
+            /* tulisan nama toko/ brand nya hilang */
+
+    }
+
+    /* munculin lg nama toko di dalam gambar */
+    .hero h2, .hero p {
+        display: block;
+        background-color: black;
+        color: white;
+        padding: 10px;
+        margin-bottom: 5px;
+            /* biar ada jarak nama toko dan slogannya */
+    }
+
+    /* agar posisi nama toko dan slogan ketengah */
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: start; /* kiri */
+        justify-content: center;
+        
+    }
+                
+}
+
+/* untuk tablet */
+@media screen and  (max-width:768px) {
+    /* AGAR MENU HAMBURGER balik ke atas dan kanan */
+    .menu {
+        order: -1;
+            /* agar hamberger ke atas */
+        justify-items: end;
+            /* agar hamberger menu ke kanan */
+    }
+                    /* COPY DARI CSS RESPONSIVE MOBILE NGOBAR 23 */
+                    /* ====================================== */
+                    .menu-togle {
+                        display: flex;
+                    }
+
+                    .menu ul {
+                        display: flex;
+                        /* display nya awal grid ditimpa jadi display: flex; */
+                        /* hilangkan ul / menunya */
+                        position: absolute;
+                        /* background-color: black; untuk lihat/coba kalau sudah betul menunya rubah dengan warna yg sama dengan navbar nya */
+                        right: 0;
+                            /* mepet ke kanan */
+                        top: 0;
+                            /* mepet atas */
+                        width: 60%;
+                            /* lebar menu terhadap layar 60% */
+                        height: 100vh; /* vh maksudnya sebesar layar */
+                        justify-content: space-evenly;
+                        flex-direction: column;
+                            /* agar menunya menurun ke bawah */
+                        align-items: center;
+                            /* agar menunya ditengah */
+                        z-index: 1; /* agar layernya berada DI PALING DEPAN */
+
+                        /* warna background yg sama dengan navbar */
+                        background-color: black;
+
+                        /* pertama sebelum di klik checklist nya ngumpet ke kanan dulu */
+                        transform: translateY(-100%);
+                        /* translateY AGAR MENU HAMBERGER TURUNNYA DARI ATAS */
+                        /* tapi kalau scrool ke kanan menunya kelihatan, cara ngilanginnya di body dikasih overflow-x: hidden; jadi kalau ada yg bablas ke kanan disembunyikan*/
+
+                        transition: all 1s;
+                            /* kemunculan menunya dikasih animasi 1 detik */
+                        opacity: 0;
+                            /* munculnya dari apacity 0 (tdk kelihatan) dampai apacity 1 kelihatan 100% */
+                    }   
+                    /* maksudnya jika ul punya kelas slide maka munculkan menunya, jika gak punya kelas slide maka hilangkan */
+                    /* nanti pake javascript untuk buat kelas slide didalam ul nya */
+                    .menu ul.slide {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                    /* ====================================== */
+}
+
+/* untuk hp/mobile */
+@media screen and  (max-width:600px) {
+    /* kalo di hp jarak kanan kiri terlalu besar, dikurangi */
+    body {
+        margin: 15px;
+    }
+    /* tampilannya satu2 semua berjejer ke bawah */
+    .header {
+        grid-template-areas: 
+        "hero"
+        "feature-1"
+        "feature-2";
+    }
+}

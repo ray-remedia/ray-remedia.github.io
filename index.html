@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>paffsamstore</title>
+    <!-- ambil font dari google -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="hero">
+                <h2 class="heading">Toko Vapor 2nd</h2>
+                <p class="sub-heading">Vapor Bekas Berkualitas</p>
+            </div>
+            <div class="features feature-1">
+                <h4 class="price">IDR 250K</h4>
+                <p class="item">I Gis Bus</p>
+            </div>
+            <div class="features feature-2">
+                <h4 class="price">IDR 300K</h4>
+                <p class="item">Smoke</p>
+                <!-- sekarang kasih style di css -->
+            </div>
+        </header>
+        <!-- buat nav nya -->
+        <nav class="menu">
+                <!-- COPY DARI NGOBAR23 -->
+                <div class="menu-togle"> <!-- ORANG TUA/PARENT -->
+                    <!-- akali karna gak pake javascript,buat check box transparan agar bisa dicek saat di checkboxnya di klik-->
+                    <input type="checkbox"> <!-- ANAK KE-1 -->
+                    <span></span> <!-- ANAK KE-2 FUNGSINYA DI CSS .menu-togle span:nth-child() --> 
+                    <span></span> <!-- ANAK KE-3 -->
+                    <span></span> <!-- ANAK KE-4 -->
+                </div>
+
+            <!-- judul website -->
+            <div class="brand">
+                <h1>PaffSamStore</h1>
+            </div>
+            
+            <!-- menu2-nya -->
+            <ul class="menu-list">
+                <li><a href="">Home</a></li>
+                <li><a href="">Product</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Gallery</a></li>
+            </ul>
+        </nav>
+        <!-- services -->
+        <section class="services">
+            <div class="service">
+                <div class="icon">icon1</div>            
+                <h3>Tutorial</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam consequatur et quod ipsam adipisci corporis.</p>
+            </div>
+            <div class="service">
+                <div class="icon">icon2</div>            
+                <h3>Online Course</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam consequatur et quod ipsam adipisci corporis.</p>
+            </div>
+            <div class="service">
+                <div class="icon">icon3</div>            
+                <h3>Podcast</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam consequatur et quod ipsam adipisci corporis.</p>
+            </div>
+            <div class="service">
+                <div class="icon">icon4</div>            
+                <h3>Merchandise</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam consequatur et quod ipsam adipisci corporis.</p>
+            </div>
+
+        </section>
+        <!-- buat gallery -->
+        <section class="gallery">
+            <h2>Gallery</h2>
+            <!-- ambil gambar acak secara online https://source.unsplash.com/-->
+            <img src="https://source.unsplash.com/random/200x200" alt="">
+            <img src="https://source.unsplash.com/random/201x201" alt="">
+            <img src="https://source.unsplash.com/random/202x202" alt="">
+            <img src="https://source.unsplash.com/random/203x203" alt="">
+            <img src="https://source.unsplash.com/random/204x204" alt="">
+            <img src="https://source.unsplash.com/random/205x205" alt="">
+            <img src="https://source.unsplash.com/random/206x206" alt="">
+            <img src="https://source.unsplash.com/random/207x207" alt="">
+            <img src="https://source.unsplash.com/random/208x208" alt="">
+            <img src="https://source.unsplash.com/random/209x209" alt="">
+
+        </section>
+    </div>
+    <script>
+        const menuTogle = document.querySelector(".menu-togle input");
+        const nav = document.querySelector("nav ul");
+
+        // kalau menu togle di klik
+        menuTogle.addEventListener("click", function(){
+            nav.classList.toggle("slide");
+            // kalau tidak ada class nya tambahkan class slide, kalau ada class nya maka hilangin
+        });
+    </script>
+</body>
+</html>
